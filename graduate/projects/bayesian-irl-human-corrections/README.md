@@ -99,8 +99,8 @@ The optimizer converged cleanly — but comparing the reconstructed inter-marker
 
 <table>
 <tr>
-<td align="center"><img src="Images/preview%20(1).webp" width="380"></td>
-<td align="center"><img src="Images/preview.webp" width="380"></td>
+<td align="center"><img src="Images/aruco_markers_wall1.webp" width="380"></td>
+<td align="center"><img src="Images/aruco_markers_wall2.webp" width="380"></td>
 </tr>
 </table>
 
