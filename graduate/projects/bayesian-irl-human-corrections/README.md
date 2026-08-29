@@ -50,8 +50,8 @@ Final pixel reprojection error: **< 1 pixel**.
 
 <table>
 <tr>
-<td align="center"><b>Initial Guess</b><br><img src="images/initial_guess_3d.jpg" width="380"></td>
-<td align="center"><b>Final Optimized Plot</b><br><img src="images/final_plot_3d.jpg" width="380"></td>
+<td align="center"><b>Initial Guess</b><br><img src="Images/initial_guess_3d.jpg" width="380"></td>
+<td align="center"><b>Final Optimized Plot</b><br><img src="Images/final_plot_3d.jpg" width="380"></td>
 </tr>
 </table>
 
@@ -92,15 +92,15 @@ The optimizer converged cleanly — but comparing the reconstructed inter-marker
 - **Controls:** `W/S` — forward/back, `A/D` — turn, `P` — capture image + log marker poses
 
 <p align="center">
-  <img src="images/webots_world_view.jpg" width="600">
+  <img src="Images/webots_world_view.jpg" width="600">
 </p>
 
 <p align="center"><em>Webots simulation environment — arena with checkerboard floor and wall-mounted ArUco markers</em></p>
 
 <table>
 <tr>
-<td align="center"><img src="images/aruco_markers_wall1.jpg" width="380"></td>
-<td align="center"><img src="images/aruco_markers_wall2.jpg" width="380"></td>
+<td align="center"><img src="Images/preview%20(1).webp" width="380"></td>
+<td align="center"><img src="Images/preview.webp" width="380"></td>
 </tr>
 </table>
 
@@ -142,4 +142,4 @@ Both point to the same lesson: correctness at the algorithm level isn't enough. 
 | `A4.py` | Solver script — camera calibration, ArUco detection, factor-graph construction, Levenberg-Marquardt optimization |
 | `controller.py` | Webots supervisor controller — robot motion, camera feed, real-time ArUco detection, marker pose logging |
 | `Assignment_4_Report.pdf` | Full write-up with detailed methodology, results, and analysis |
-| `images/` | Result plots and simulation screenshots |
+| `Images/` | Result plots and simulation screenshots |
