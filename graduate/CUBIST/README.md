@@ -15,7 +15,7 @@ The real story of this project isn't just the method, it's the debugging. The fi
 ---
 
 <p align="center">
-  <img src="images/Complete_Pipeline_page-0001.jgp" width="900">
+  <img src="images/Complete_Pipeline_page-0001.jpg" width="900">
 </p>
 
 <p align="center"><em>The full CUBIST pipeline: render → VLM critique → identify under-represented tokens → boost → regenerate.</em></p>
@@ -141,13 +141,7 @@ This question was revisited rigorously after the VQA scorer redesign and bug fix
 
 **Independent cross-validation:** ImageReward (a metric entirely unrelated to the project's own VQA scorer) was used to score the same batch's round-by-round trajectory. Individual-round medians showed a genuine upward trend from round 4 onward (+0.025 to +0.077), distinct from the flat, noise-level trend seen under the original, pre-fix pipeline.
 
-**Full 40-object batch grids** (8 rounds per object, no boosting-budget fix yet applied):
-
-![40-object batch grid, first pass](images/vqa_batch_40_grid.png)
-
-**40-object batch grid, revert fix + reduced boost budget applied:**
-
-![40-object batch grid, maxboost2](images/maxboost2_40_grid.png)
+**Full 40-object batch grids** (8 rounds per object, no boosting-budget fix yet applied) and the revert-fix/reduced-boost-budget version are included in the appendix at the end of this document.
 
 **CUBIST vs. seed-control, side by side, all 40 objects, all rounds/seeds** (gold border = best on each side per row):
 
@@ -207,3 +201,15 @@ This repository contains the full set of diagnostic, evaluation, and analysis sc
 - **Diagnostic scans:** `stuck_token_scan.py`, `overboost_ablation.py`, `threshold_zone_inspector.py`, `h2_variance_test.py`
 
 See individual script docstrings for usage details. All scripts assume the `trellis` conda environment on VT ARC's TinkerCliffs cluster.
+
+---
+
+## Appendix: Full 40-Object Result Grids
+
+**40-object batch grid, first pass** (8 rounds per object, no boosting-budget fix yet applied):
+
+![40-object batch grid, first pass](images/vqa_batch_40_grid.png)
+
+**40-object batch grid, revert fix + reduced boost budget applied:**
+
+![40-object batch grid, maxboost2](images/maxboost2_40_grid.png)
