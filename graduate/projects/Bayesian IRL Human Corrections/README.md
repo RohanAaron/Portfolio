@@ -1,7 +1,6 @@
 # Online Bayesian IRL from Human Corrections
 
-**Authors:** Rohan Aaron Indupally & Bin Kang
-**Course:** Human-Robot Interaction, Virginia Tech, Spring 2026
+**Authors:** Rohan Aaron Indupally 
 
 ---
 
