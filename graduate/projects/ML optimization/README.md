@@ -1,7 +1,7 @@
 # Gauss-Newton vs. Levenberg-Marquardt: Large-Scale Tomography Reconstruction
 
-**Authors:** Rohan Aaron Indupally & Tanisha Jain
-**Course:** MATH 5544 (Numerical Optimization), Final Project
+**Authors:** Rohan Aaron Indupally 
+
 
 ---
 
