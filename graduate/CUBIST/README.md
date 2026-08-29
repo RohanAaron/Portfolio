@@ -15,7 +15,7 @@ The real story of this project isn't just the method, it's the debugging. The fi
 ---
 
 <p align="center">
-  <img src="images/Complete Pipeline_page-0001.jgp" width="900">
+  <img src="images/Complete_Pipeline_page-0001.jgp" width="900">
 </p>
 
 <p align="center"><em>The full CUBIST pipeline: render → VLM critique → identify under-represented tokens → boost → regenerate.</em></p>
