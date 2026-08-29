@@ -22,7 +22,7 @@ Robots are usually programmed with a fixed objective. Humans aren't that predict
 That's the setting here: a Panda arm sorts 9 objects (each with a color, size, and shape) into 3 bins. The human's real preference is to sort by **color** — but the robot starts out believing the sorting rule is **size**. The only way the robot can learn the truth is through the human physically correcting it, one object at a time, live, during the task.
 
 <p align="center">
-  <img src="images/pybullet_environment.jpg" width="500"><br>
+  <img src="Images/pybullet_environment.jpg" width="500"><br>
   <em>The PyBullet simulation: nine color/size/shape objects on a table, three sorting bins, one Panda arm.</em>
 </p>
 
@@ -43,7 +43,7 @@ The result is a belief that shifts *gradually*, the same way a person might slow
 A tunable prior strength parameter controls exactly how much evidence it takes to shift the robot's belief — tuned here so the robot needs roughly a full trial's worth of corrections before it visibly starts changing its behavior.
 
 <p align="center">
-  <img src="images/live_demo_hud.jpg" width="500"><br>
+  <img src="Images/live_demo_hud.jpg" width="500"><br>
   <em>Live on-screen HUD showing the robot's current belief (color/size/shape weights) and running correction count mid-sort.</em>
 </p>
 
@@ -61,14 +61,14 @@ Across 5 trials of 9 objects each, the robot needed:
 Accuracy (percentage of objects placed correctly *before* any human correction) rose from **0% to 100%** over those trials, while a no-learning baseline (frozen belief) stayed near random chance the whole time.
 
 <p align="center">
-  <img src="images/accuracy_by_trial.jpg" width="500"><br>
+  <img src="Images/accuracy_by_trial.jpg" width="500"><br>
   <em>Pre-override accuracy by trial — Bayesian IRL (blue) climbs to 100%, while the no-learning baseline (red) hovers near chance.</em>
 </p>
 
 You can also watch the robot's belief physically walk across a probability simplex from "size" toward "color" as corrections accumulate:
 
 <p align="center">
-  <img src="images/theta_trajectory_simplex.png" width="500"><br>
+  <img src="Images/theta_trajectory_simplex.png" width="500"><br>
   <em>Each dot is the robot's belief after one correction, drifting from the size corner toward the true color-based preference (gold star).</em>
 </p>
 
