@@ -9,9 +9,15 @@
 
 A Panda robot arm sorts objects into bins. It starts out convinced the human wants them sorted by **size** — but the human actually wants them sorted by **color**. Every time the robot pauses at the wrong bin, the human corrects it, and the robot updates a full probability distribution over what it thinks the human wants, using a 300-particle Bayesian filter. No labeled dataset, no offline training — just a robot getting smarter in real time from a handful of physical corrections. By trial 4, it's sorting with 100% accuracy and zero corrections needed.
 
+### ▶️ Watch the Demo (click the thumbnail below to play)
+
+<p align="center">
+
 [![Watch the demo video](https://img.youtube.com/vi/yRGJsl7YXKE/maxresdefault.jpg)](https://www.youtube.com/watch?v=yRGJsl7YXKE)
 
-*Click to watch the demo video.*
+**👆 Click the image above to watch the robot learn in real time 👆**
+
+</p>
 
 ---
 
