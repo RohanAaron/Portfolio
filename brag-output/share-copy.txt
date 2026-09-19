@@ -1,0 +1,1 @@
+Made a portfolio of robots that get better by arguing with themselves. CUBIST pushed text-to-3D alignment to an 82.5% win rate (p ~ 10⁻⁹), a Panda arm went from 0% to 100% sorting accuracy just from being nudged, and yes, the ATV gearbox placed 3rd out of 120 teams.

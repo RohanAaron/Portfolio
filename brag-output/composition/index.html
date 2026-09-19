@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="en" data-resolution="landscape">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script src="assets/vendor/gsap.min.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: #0d1117;
+      }
+      #root {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        background: #0d1117;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        color: #e6edf3;
+      }
+
+      .clip {
+        position: absolute;
+        inset: 0;
+      }
+
+      /* ---- highlight scenes (2-4): full-bleed image + stat overlay ---- */
+      .hl-scene {
+        background: #0d1117;
+        overflow: hidden;
+      }
+      .hl-image-wrap {
+        position: absolute;
+        inset: 0;
+        overflow: hidden;
+      }
+      .hl-image {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transform-origin: center center;
+      }
+      .hl-veil {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to bottom,
+          rgba(6, 9, 12, 0.38) 0%,
+          rgba(6, 9, 12, 0.5) 55%,
+          rgba(6, 9, 12, 0.92) 100%
+        );
+      }
+      .hl-stat-wrap {
+        position: absolute;
+        left: 50%;
+        bottom: 70px;
+        transform: translateX(-50%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 14px;
+        text-align: center;
+        padding: 28px 64px 34px;
+        border-radius: 20px;
+        background: rgba(6, 9, 12, 0.86);
+      }
+      .hl-label {
+        font-size: 30px;
+        font-weight: 600;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: #e6edf3;
+        opacity: 0;
+      }
+      .hl-counter-row {
+        display: flex;
+        align-items: baseline;
+        justify-content: center;
+        width: 640px;
+        opacity: 0;
+      }
+      .hl-counter {
+        font-variant-numeric: tabular-nums;
+        display: inline-block;
+        font-size: 148px;
+        font-weight: 700;
+        color: #38c15e;
+        transform-origin: center center;
+        text-shadow: 0 0 34px rgba(46, 160, 67, 0.45);
+      }
+      .hl-counter-suffix {
+        font-size: 96px;
+        font-weight: 700;
+        color: #38c15e;
+        opacity: 0;
+      }
+      .hl-subline {
+        font-size: 36px;
+        color: #e6edf3;
+        opacity: 0;
+      }
+      .hl-slam {
+        font-size: 68px;
+        font-weight: 700;
+        color: #e6edf3;
+        opacity: 0;
+      }
+      .hl-slam .hl-accent {
+        color: #38c15e;
+      }
+
+      /* ---- sub-composition host wrappers (terminal boot / outro) ---- */
+      .term-host {
+        background: #0d1117;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="20.5"
+      data-width="1920"
+      data-height="1080"
+    >
+      <!-- Scene 1: terminal boot -->
+      <div
+        id="scene1"
+        class="clip term-host"
+        data-composition-id="terminal-boot"
+        data-composition-src="compositions/terminal-boot.html"
+        data-start="0"
+        data-duration="4.4"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+      ></div>
+
+      <!-- Scene 2: CUBIST -->
+      <div id="scene2" class="clip hl-scene" data-start="3.6" data-duration="4.8" data-track-index="1">
+        <div class="hl-image-wrap">
+          <img class="hl-image" id="s2-image" src="assets/images/cubist-pipeline.jpg" alt="" />
+          <div class="hl-veil"></div>
+        </div>
+        <div class="hl-stat-wrap">
+          <div class="hl-counter-row" id="s2-counter-row">
+            <span class="hl-counter" id="s2-counter">0</span
+            ><span class="hl-counter-suffix" id="s2-suffix">%</span>
+          </div>
+          <div class="hl-subline" id="s2-subline">p ~ 10⁻⁹</div>
+        </div>
+      </div>
+
+      <!-- Scene 3: Bayesian IRL -->
+      <div id="scene3" class="clip hl-scene" data-start="7.6" data-duration="4.8" data-track-index="1">
+        <div class="hl-image-wrap">
+          <img class="hl-image" id="s3-image" src="assets/images/bayesian-simplex.png" alt="" />
+          <div class="hl-veil"></div>
+        </div>
+        <div class="hl-stat-wrap">
+          <div class="hl-label" id="s3-label">Belief accuracy from human corrections</div>
+          <div class="hl-counter-row" id="s3-counter-row">
+            <span class="hl-counter" id="s3-counter">0</span
+            ><span class="hl-counter-suffix" id="s3-suffix">%</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scene 4: ATV gearbox team -->
+      <div id="scene4" class="clip hl-scene" data-start="11.6" data-duration="4.8" data-track-index="1">
+        <div class="hl-image-wrap">
+          <img class="hl-image" id="s4-image" src="assets/images/atv-cad.jpg" alt="" />
+          <div class="hl-veil"></div>
+        </div>
+        <div class="hl-stat-wrap">
+          <div class="hl-slam" id="s4-slam"><span class="hl-accent">3rd</span> of 120 teams</div>
+        </div>
+      </div>
+
+      <!-- Scene 5: terminal outro -->
+      <div
+        id="scene5"
+        class="clip term-host"
+        data-composition-id="terminal-outro"
+        data-composition-src="compositions/terminal-outro.html"
+        data-start="15.6"
+        data-duration="4.9"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+      ></div>
+
+      <!-- Music bed -->
+      <audio
+        id="music-bed"
+        src="assets/music/happy-beats-business-moves-vol-10-by-ende-dot-app.mp3"
+        data-start="0"
+        data-duration="20.5"
+        data-track-index="10"
+        data-automation='{"version":1,"lanes":[{"target":"volume","points":[{"t":0,"v":0},{"t":0.6,"v":0.32},{"t":3.8,"v":0.5},{"t":15.6,"v":0.58},{"t":19.6,"v":0.58},{"t":20.5,"v":0}]}]}'
+      ></audio>
+
+      <!-- Scene-transition SFX (one consistent switch sound, per default-tone restraint) -->
+      <audio id="sfx-trans-1" src="assets/sfx/ui/switch1.ogg" data-start="3.9" data-track-index="11" data-volume="0.6"></audio>
+      <audio id="sfx-trans-2" src="assets/sfx/ui/switch1.ogg" data-start="7.9" data-track-index="12" data-volume="0.6"></audio>
+      <audio id="sfx-trans-3" src="assets/sfx/ui/switch1.ogg" data-start="11.9" data-track-index="13" data-volume="0.6"></audio>
+      <audio id="sfx-trans-4" src="assets/sfx/ui/switch1.ogg" data-start="15.9" data-track-index="14" data-volume="0.6"></audio>
+
+      <!-- Stat-reveal accents -->
+      <audio id="sfx-s2-accent" src="assets/sfx/impact/impactGeneric_light_000.ogg" data-start="5.55" data-track-index="15" data-volume="0.7"></audio>
+      <audio id="sfx-s3-resolve" src="assets/sfx/ui/click3.ogg" data-start="9.7" data-track-index="16" data-volume="0.7"></audio>
+      <audio id="sfx-s4-impact" src="assets/sfx/impact/impactMetal_medium_000.ogg" data-start="12.5" data-track-index="17" data-volume="0.8"></audio>
+
+      <!-- Typing texture (approximate; the mounted terminal sub-compositions own their exact keystroke timing internally) -->
+      <audio id="sfx-key-1" src="assets/sfx/keyboard/keypress-001.wav" data-start="0.45" data-track-index="18" data-volume="0.35"></audio>
+      <audio id="sfx-key-2" src="assets/sfx/keyboard/keypress-007.wav" data-start="0.65" data-track-index="19" data-volume="0.35"></audio>
+      <audio id="sfx-key-3" src="assets/sfx/keyboard/keypress-014.wav" data-start="0.85" data-track-index="20" data-volume="0.35"></audio>
+      <audio id="sfx-key-4" src="assets/sfx/keyboard/keypress-003.wav" data-start="16.05" data-track-index="21" data-volume="0.35"></audio>
+      <audio id="sfx-key-5" src="assets/sfx/keyboard/keypress-019.wav" data-start="16.15" data-track-index="22" data-volume="0.35"></audio>
+    </div>
+    <script>
+      const tl = gsap.timeline({ paused: true });
+
+      // ---------------------------------------------------------------
+      // Crossfades: outgoing + incoming animate at the SAME time T.
+      // ---------------------------------------------------------------
+      tl.to("#scene1", { opacity: 0, duration: 0.4, ease: "power2.inOut" }, 3.8);
+      tl.fromTo("#scene2", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.inOut" }, 3.8);
+
+      tl.to("#scene2", { opacity: 0, duration: 0.4, ease: "power2.inOut" }, 7.8);
+      tl.fromTo("#scene3", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.inOut" }, 7.8);
+
+      tl.to("#scene3", { opacity: 0, duration: 0.4, ease: "power2.inOut" }, 11.8);
+      tl.fromTo("#scene4", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.inOut" }, 11.8);
+
+      tl.to("#scene4", { opacity: 0, duration: 0.4, ease: "power2.inOut" }, 15.8);
+      tl.fromTo("#scene5", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.inOut" }, 15.8);
+
+      // Final scene exception: fade the outro to black at the very end.
+      tl.to("#scene5", { opacity: 0, duration: 0.4, ease: "power2.in" }, 20.1);
+
+      // ---------------------------------------------------------------
+      // Scene 2 — CUBIST: gentle Ken Burns + counting stat + subline.
+      // ---------------------------------------------------------------
+      tl.fromTo("#s2-image", { scale: 1.0 }, { scale: 1.035, duration: 4.2, ease: "sine.inOut" }, 3.8);
+      // Counter row stays hidden through the crossfade so its idle "0" never
+      // overlaps scene1/scene2 during the 0.4s handoff (content_overlap fix).
+      tl.to("#s2-counter-row", { opacity: 1, duration: 0.15, ease: "none" }, 4.2);
+
+      (function () {
+        const counter = document.getElementById("s2-counter");
+        const state = { value: 0 };
+        const START_SCALE = 0.55;
+        tl.to(
+          state,
+          {
+            value: 82.5,
+            duration: 1.3,
+            ease: "power3.out",
+            onUpdate: () => {
+              counter.textContent = state.value.toFixed(1);
+            },
+          },
+          4.25,
+        );
+        tl.fromTo("#s2-counter", { scale: START_SCALE }, { scale: 1, duration: 1.3, ease: "power3.out" }, 4.25);
+        // beat-locked: 5.55s (stat lands right after the count completes)
+        tl.fromTo(
+          "#s2-suffix",
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 0.4, ease: "back.out(1.6)" },
+          5.55,
+        );
+        tl.to("#s2-subline", { opacity: 1, duration: 0.4, ease: "power2.out" }, 6.05);
+      })();
+
+      // ---------------------------------------------------------------
+      // Scene 3 — Bayesian IRL: clip-path "draw-in" + counting accuracy.
+      // ---------------------------------------------------------------
+      tl.set("#s3-image", { scale: 1.0, clipPath: "inset(0 100% 0 0)" }, 0);
+      tl.fromTo("#s3-image", { scale: 1.0 }, { scale: 1.035, duration: 4.2, ease: "sine.inOut" }, 7.8);
+      tl.fromTo(
+        "#s3-image",
+        { clipPath: "inset(0 100% 0 0)" },
+        { clipPath: "inset(0 0% 0 0)", duration: 1.4, ease: "power3.out" },
+        8.3,
+      );
+      tl.fromTo("#s3-label", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 8.25);
+      // Counter row stays hidden through the crossfade (content_overlap fix, see scene 2).
+      tl.to("#s3-counter-row", { opacity: 1, duration: 0.15, ease: "none" }, 8.2);
+
+      (function () {
+        const counter = document.getElementById("s3-counter");
+        const state = { value: 0 };
+        const START_SCALE = 0.55;
+        tl.to(
+          state,
+          {
+            value: 100,
+            duration: 1.4,
+            ease: "power3.out",
+            onUpdate: () => {
+              counter.textContent = Math.round(state.value).toString();
+            },
+          },
+          8.3,
+        );
+        tl.fromTo("#s3-counter", { scale: START_SCALE }, { scale: 1, duration: 1.4, ease: "power3.out" }, 8.3);
+        // beat-locked: 9.70s (stat lands right after the count completes)
+        tl.fromTo(
+          "#s3-suffix",
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 0.4, ease: "back.out(1.6)" },
+          9.7,
+        );
+      })();
+
+      // ---------------------------------------------------------------
+      // Scene 4 — ATV gearbox: hero CAD render + ranking slam.
+      // ---------------------------------------------------------------
+      tl.fromTo("#s4-image", { scale: 1.0 }, { scale: 1.035, duration: 4.2, ease: "sine.inOut" }, 11.8);
+      tl.fromTo(
+        "#s4-slam",
+        { opacity: 0, y: 30, scale: 0.9 },
+        { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "back.out(1.4)" },
+        12.4,
+      );
+
+      tl.seek(0);
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>
